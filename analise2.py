@@ -5,7 +5,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # Carregar dados do CSV
-dados = pd.read_csv('modelo.csv')
+dados = pd.read_csv('treino.csv')
+dados_teste = pd.read_csv('teste2.csv')
 
 # Separar os recursos (X) e rótulos (y)
 X = dados[['ax', 'ay', 'az', 'atotal']]
@@ -36,4 +37,5 @@ model.fit(X_train, y_train, epochs=200, batch_size=32, validation_split=0.2)
 accuracy = model.evaluate(X_test, y_test)[1]
 print(f'Acurácia do modelo: {accuracy * 100:.2f}%')
 
-model.save('/home/linux/Área de Trabalho/modelo4')
+#model.save('/home/linux/Área de Trabalho/modelo4')
+model.predict()

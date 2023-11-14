@@ -4,17 +4,17 @@ import numpy as np
 # Dados de entrada (exemplo)
 # Suponha que são 10 linhas de dados com três características cada
 dados = np.array([
-[5.18,	-13.68,	-3.17,	14.96],
+[[5.18,	-13.68,	-3.17,	14.96],
 [7.01,	-11.5,	-4.02,	14.05],
 [9.87,	-10.03,	-4.04,	14.64],
 [12.88,	-8.4,	-3.82,	15.84],
-[14.24,	-6.46,	-2.63,	15.85],
+[14.24,	-6.46,	-2.63,	15.85]],
 
-[-0.04,	-7.0,	1.64,	7.18],
+[[-0.04,	-7.0,	1.64,	7.18],
 [-0.36,	-6.08,	1.53,	6.27],
 [-0.64,	-5.09,	1.32,	5.29],
 [-0.72,	-4.57,	1.45,	4.84],
-[-0.74,	-4.34,	1.42,	4.62],
+[-0.74,	-4.34,	1.42,	4.62]],
 
 
 ])
@@ -66,4 +66,4 @@ print("Saída Real     |     Previsão do Modelo")
 
 print(previsoes)
 
-modelo.save('/home/linux/Área de Trabalho/modelo5')
+#modelo.save('/home/linux/Área de Trabalho/modelo5')

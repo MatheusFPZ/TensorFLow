@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 
 
-modelo_lite_path = "modelo_lite.tflite"
+modelo_lite_path = "modelo_lite2.tflite"
 interpreter = tf.lite.Interpreter(model_path=modelo_lite_path)
 interpreter.allocate_tensors()
 # Realizar inferência com dados de exemplo
