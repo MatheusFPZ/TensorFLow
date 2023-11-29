@@ -5,11 +5,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # Carregar dados do CSV
-dados = pd.read_csv('treino.csv')
-dados_teste = pd.read_csv('teste2.csv')
+dados = pd.read_csv('punch/punch_1.csv')
+dados_teste = pd.read_csv('punch/punch_18.csv')
 
 # Separar os recursos (X) e rótulos (y)
-X = dados[['ax', 'ay', 'az', 'atotal']]
+X = dados[['x_acceleration', 'y_acceleration', 'z_acceleration']]
 y = dados['soco']  # Substitua 'rotulo' pelo nome real da coluna que indica soco ou não soco
 
 # Dividir os dados em conjuntos de treinamento e teste
@@ -31,11 +31,19 @@ model = tf.keras.models.Sequential([
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Treinar o modelo
-model.fit(X_train, y_train, epochs=200, batch_size=32, validation_split=0.2)
+model.fit(X_train, y_train, epochs=30, batch_size=32, validation_split=0.2)
 
 # Avaliar o modelo
 accuracy = model.evaluate(X_test, y_test)[1]
 print(f'Acurácia do modelo: {accuracy * 100:.2f}%')
 
 #model.save('/home/linux/Área de Trabalho/modelo4')
-model.predict()
+previsoes = model.predict(dados_teste)
+
+model.save('/home/linux/Área de Trabalho/modelos/modelo7')
+
+for i in range(len(previsoes)):
+   if(previsoes[i]>=0.5):
+    print("socou")
+   else:
+       print("//")

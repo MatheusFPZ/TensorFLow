@@ -1,15 +1,20 @@
 import numpy as np
-import pandas as pd
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # Criar os dados para "soco" e "não soco"
-soco_data = np.array([
-    [-0.6003418,1.178711,-0.4172363],
-    [-0.5666504,1.426514,-0.7111816],
-    [-0.6679688,1.743408,-0.9182129]
-    # ... (adicionar todas as linhas de dados de "soco" aqui)
+soco_data_1 = np.array([
+    [-0.6003418, 1.178711, -0.4172363],
+    [-0.5666504, 1.426514, -0.7111816],
+    [-0.6679688, 1.743408, -0.9182129],
+    # ... (adicionar todas as linhas de dados de "soco" para o conjunto 1 aqui)
+])
+
+soco_data_2 = np.array([
+    [0.123, -0.456, 0.789],  # Adicionar novas linhas de dados de "soco" para o conjunto 2 aqui
+    [1.234, -1.345, 2.456],
+    # ...
 ])
 
 nao_soco_data = np.array([
@@ -21,12 +26,13 @@ nao_soco_data = np.array([
 ])
 
 # Criar rótulos para os dados
-soco_labels = np.ones(len(soco_data))  # Definir rótulos 1 para "soco"
+soco_labels_1 = np.ones(len(soco_data_1))  # Definir rótulos 1 para "soco" no conjunto 1
+soco_labels_2 = np.ones(len(soco_data_2))  # Definir rótulos 1 para "soco" no conjunto 2
 nao_soco_labels = np.zeros(len(nao_soco_data))  # Definir rótulos 0 para "não soco"
 
 # Juntar todos os dados e rótulos
-all_data = np.vstack((soco_data, nao_soco_data))
-all_labels = np.concatenate((soco_labels, nao_soco_labels))
+all_data = np.vstack((soco_data_1, soco_data_2, nao_soco_data))
+all_labels = np.concatenate((soco_labels_1, soco_labels_2, nao_soco_labels))
 
 # Dividir os dados em conjuntos de treinamento e teste
 X_train, X_test, y_train, y_test = train_test_split(all_data, all_labels, test_size=0.2, random_state=42)
@@ -47,7 +53,7 @@ model = tf.keras.models.Sequential([
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Treinar o modelo
-model.fit(X_train, y_train, epochs=30, batch_size=32, validation_split=0.2)
+model.fit(X_train, y_train, epochs=500, batch_size=32, validation_split=0.2)
 
 # Avaliar o modelo
 accuracy = model.evaluate(X_test, y_test)[1]
