@@ -39,7 +39,7 @@ print(grupos_sequenciais.shape)  # Saída deve ser (n_sequencias, 3, tamanho_seq
 print(rótulos_definidos)  # Rótulos definidos para as sequências
 
 model = models.Sequential([
-    layers.Conv1D(32, kernel_size=3, activation='relu', input_shape=(3, 30)),
+    layers.Conv1D(32, kernel_size=3, activation='relu', input_shape=(3, 60)),
     layers.MaxPooling1D(pool_size=1),  # Ajuste aqui
     layers.Flatten(),
     layers.Dense(64, activation='relu'),
@@ -50,7 +50,7 @@ model = models.Sequential([
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Treinar o modelo
-model.fit(grupos_sequenciais, rótulos_definidos, epochs=10, batch_size=32, validation_split=0.2, shuffle=True)
+model.fit(grupos_sequenciais, rótulos_definidos, epochs=30, batch_size=32, validation_split=0.2, shuffle=True)
 
 
 model.save('/home/linux/Área de Trabalho/modelos/modelo9')

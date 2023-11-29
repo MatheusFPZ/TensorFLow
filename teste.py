@@ -4,7 +4,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 # Carregar os dados do arquivo CSV
-data = pd.read_csv('punch_8.csv')
+data = pd.read_csv('punch_6.csv')
 
 # Exibir as primeiras linhas do arquivo CSV para verificar o formato dos dados
 print(data.head())

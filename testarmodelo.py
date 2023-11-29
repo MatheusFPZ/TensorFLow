@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 
 
 
-dados_teste = pd.read_csv('punch_4.csv')
+dados_teste = pd.read_csv('punch_29.csv')
 
 # Processar os dados de teste da mesma maneira que fez durante o treinamento
 # Certifique-se de realizar as mesmas etapas de pré-processamento, como normalização, redimensionamento, etc.
@@ -15,7 +15,7 @@ y_teste = dados_teste['y_acceleration'].to_numpy()
 z_teste = dados_teste['z_acceleration'].to_numpy()  
 
 # Agrupar os dados em sequências do mesmo tamanho usado durante o treinamento (por exemplo, sequências de 3 por 30)
-tamanho_sequencia = 30
+tamanho_sequencia = 60
 grupos_sequenciais_teste = []
 
 for i in range(0, len(x_teste), tamanho_sequencia):
